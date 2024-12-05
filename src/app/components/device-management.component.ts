@@ -35,12 +35,12 @@ import { debounceTime, Subject, takeUntil } from 'rxjs';
       @for(device of filteredDevices; track $index) {
       <div class="flex justify-between items-center">
         <div
-          class="w-full m-2 px-4 py-2 flex justify-between border rounded-xl"
+          class="w-full m-2 px-4 py-2 flex justify-between border rounded-xl hover:brightness-[0.8]"
           [ngClass]="{ 
-          'hover:bg-light border-light' : device.type === 'LIGHT',
-          'hover:bg-thermostat border-thermostat' : device.type === 'THERMOSTAT',
-          'hover:bg-camera border-camera' : device.type === 'CAMERA',
-          'hover:bg-blinds border-blinds' : device.type === 'BLINDS',
+          'bg-light' : device.type === 'LIGHT',
+          'bg-thermostat' : device.type === 'THERMOSTAT',
+          'bg-camera' : device.type === 'CAMERA',
+          'bg-blinds' : device.type === 'BLINDS',
         }"
         >
           @for(key of objectKeys(device); track $index) { @if(key !== 'id') {
