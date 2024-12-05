@@ -245,7 +245,10 @@ export class ModalDeviceFormComponent {
     this.form.markAllAsTouched();
     if (!this.form.valid) return;
 
-    this.form.get('type')?.enable();
+    if (this.form.get('type')?.disabled) {
+      this.form.get('type')?.enable();
+    }
+
     this.dialogRef.close(this.form.value);
   }
 }
