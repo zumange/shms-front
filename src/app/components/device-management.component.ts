@@ -81,7 +81,7 @@ export class DeviceManagementComponent implements OnInit {
   ngOnInit(): void {
     this.deviceService.getAllDevices().subscribe((data: Device[]) => {
       this.devices = data.sort((d1, d2) => {
-        return d1.name! > d2.name! ? 1 : -1;
+        return d1.name!.localeCompare(d2.name!);
       });
       this.filteredDevices = data;
     });
@@ -114,32 +114,15 @@ export class DeviceManagementComponent implements OnInit {
               this.devices.push(updatedDevice);
             }
 
+            this.filteredDevices = this.devices.sort((d1, d2) => {
+              return d1.name!.localeCompare(d2.name!);
+            });
+
             this.snackbarService.show({
               message: 'Device saved successfully.',
               duration: 4000,
             });
           });
-      });
-  }
-
-  updateDevice(device: Device) {
-    this.deviceService
-      .updateDevice(device)
-      .subscribe((updatedDevice: Device) => {
-        const index = this.devices.findIndex((d) => d.id === updatedDevice.id);
-
-        if (index !== -1) {
-          this.devices[index] = updatedDevice;
-        } else {
-          this.devices.push(updatedDevice);
-        }
-
-        this.filteredDevices = this.devices;
-
-        this.snackbarService.show({
-          message: 'Device saved successfully.',
-          duration: 4000,
-        });
       });
   }
 
