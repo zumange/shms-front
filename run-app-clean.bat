@@ -1,6 +1,4 @@
 @echo off
-git checkout main
-git pull
 
 for /f "tokens=*" %%i in ('docker ps -q --filter "name=shms-front"') do (
     docker stop %%i
