@@ -4,14 +4,9 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
-After you cloned this repository to your local machine, position to the root of cloned Angular project and create docker image with this command:
-```bash
-docker build -t shms-front .
-```
-
-Next step is to run docker container with this command:
-```bash
-docker run -p 4201:4200 shms-front
+After you cloned this repository to your local machine, position to the root of cloned Angular project and run the script i created for boot and run:
+```cmd
+run-app-clean.bat
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4201/`.
